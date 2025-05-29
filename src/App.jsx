@@ -1,19 +1,35 @@
 import { useState, useEffect } from "react";
 import supabase from "./supabase"; // Ensure this is correctly configured
+import { getBookings } from "./bookings/apiBooking";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 60 * 1000 } },
+});
 
 function App() {
   const [bookings, setBookings] = useState([]);
   const [newBooking, setNewBooking] = useState({ name: "", date: "" });
   const [error, setError] = useState(null);
 
+  const x = useQuery({
+    queryKey: ["booking"],
+    queryFn: getBookings,
+  });
+  console.log(x);
+
   // Fetch all bookings
-  const fetchBookings = async () => {
-    const { data, error } = await supabase.from("bookings").select("*");
-    if (error) {
-      setError(error.message);
-    } else {
+  const fetchBookings = function () {
+    const promise = getBookings();
+    promise.then(function (data) {
+      console.log(data);
       setBookings(data);
-    }
+    });
   };
 
   // Add a new booking
@@ -63,7 +79,8 @@ function App() {
   console.log(bookings);
 
   return (
-    <div>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <h1>Supabase CRUD Example</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
@@ -97,7 +114,7 @@ function App() {
           </li>
         ))}
       </ul>
-    </div>
+    </QueryClientProvider>
   );
 }
 
