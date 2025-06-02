@@ -1,5 +1,5 @@
 import { getBookings } from "./apiBooking";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import supabase from "../supabase";
 
 function ListBooking() {
@@ -11,8 +11,6 @@ function ListBooking() {
     queryKey: ["bookings"],
     queryFn: getBookings,
   });
-  if (isLoading) console.log("Loading...");
-  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
 
   // Update a booking
   const updateBooking = async (id, updatedFields) => {
@@ -28,7 +26,18 @@ function ListBooking() {
     const { error } = await supabase.from("bookings").delete().eq("id", id);
     if (error) console.error(error);
   };
+  const queryClient = useQueryClient();
 
+  const { isLoading2, mutate } = useMutation({
+    mutationFn: deleteBooking,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["bookings"],
+        queryFn: ListBooking,
+      });
+    },
+  });
+  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
   return (
     <div>
       <h2>Bookings {isLoading ? <span>"Loading...</span> : ""}</h2>
@@ -43,7 +52,7 @@ function ListBooking() {
             >
               Update
             </button>
-            <button onClick={() => deleteBooking(booking.id)}>Delete</button>
+            <button onClick={() => mutate(booking.id)}>Delete</button>
           </li>
         ))}
       </ul>
