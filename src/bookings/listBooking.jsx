@@ -33,7 +33,7 @@ function ListBooking() {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["bookings"],
-        queryFn: ListBooking,
+        queryFn: getBookings,
       });
     },
   });
