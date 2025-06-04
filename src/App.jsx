@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import supabase from "./supabase"; // Ensure this is correctly configured
 import ListBooking from "./bookings/listBooking";
+import { useForm } from "react-hook-form";
 
 function App() {
   const [newBooking, setNewBooking] = useState({ name: "", date: "" });
@@ -19,25 +20,28 @@ function App() {
       setNewBooking({ name: "", date: "" });
     }
   };
+  const { register, handleSubmit } = useForm();
+  function aftersubmit(data) {
+    console.log(data);
+  }
   return (
     <div>
       <h1>Supabase CRUD Example</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <h2>Add Booking</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={newBooking.name}
-        onChange={(e) => setNewBooking({ ...newBooking, name: e.target.value })}
-      />
-      <input
-        type="date"
-        value={newBooking.date}
-        onChange={(e) => setNewBooking({ ...newBooking, date: e.target.value })}
-      />
-      <button onClick={addBooking}>Add</button>
+      <form onSubmit={handleSubmit(aftersubmit)}>
+        <input
+          type="text"
+          placeholder="numNights"
+          name="numNights"
+          {...register("numNights")}
+        />
+        <input type="text" name="cabinId" {...register("cabinId")} />
+        <input type="text" name="guestId" {...register("guestId")} />
 
+        <button>Add</button>
+      </form>
       <ListBooking />
     </div>
   );
