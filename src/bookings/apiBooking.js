@@ -10,3 +10,17 @@ export async function getBookings() {
 
   return data;
 }
+
+export async function insertBookings(booking) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .insert([booking])
+    .select();
+
+  if (error) {
+    console.log(error);
+    throw new Error("Booking is not loaded");
+  }
+
+  return data;
+}

@@ -44,7 +44,7 @@ function ListBooking() {
       <ul>
         {bookings?.map((booking) => (
           <li key={booking.id}>
-            {booking.id} - {booking.numNights}
+            {booking.name} - {booking.numNights}
             <button
               onClick={() =>
                 updateBooking(booking.id, { name: "Updated Name" })

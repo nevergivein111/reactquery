@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import supabase from "./supabase"; // Ensure this is correctly configured
 import ListBooking from "./bookings/listBooking";
 import { useForm } from "react-hook-form";
+import { insertBookings } from "./bookings/apiBooking";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 function App() {
   const [newBooking, setNewBooking] = useState({ name: "", date: "" });
@@ -20,9 +22,21 @@ function App() {
       setNewBooking({ name: "", date: "" });
     }
   };
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+
+  const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: insertBookings,
+    onSuccess: () => {
+      console.log("inseerted");
+      queryClient.invalidateQueries({ queryKey: ["bookings"] });
+      reset();
+    },
+  });
+
   function aftersubmit(data) {
     console.log(data);
+    mutate(data);
   }
   return (
     <div>
@@ -37,8 +51,25 @@ function App() {
           name="numNights"
           {...register("numNights")}
         />
-        <input type="text" name="cabinId" {...register("cabinId")} />
-        <input type="text" name="guestId" {...register("guestId")} />
+        <input
+          type="text"
+          placeholder="name"
+          name="name"
+          {...register("name")}
+        />
+        <input
+          type="text"
+          placeholder="cabinId"
+          name="cabinId"
+          {...register("cabinId")}
+        />
+
+        <input
+          type="text"
+          placeholder="numNiguestIdghts"
+          name="guestId"
+          {...register("guestId")}
+        />
 
         <button>Add</button>
       </form>
