@@ -12,6 +12,8 @@ export async function getBookings() {
 }
 
 export async function insertBookings(booking) {
+  delete booking.maxnights;
+  console.log(booking);
   const { data, error } = await supabase
     .from("bookings")
     .insert([booking])
