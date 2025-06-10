@@ -22,7 +22,8 @@ function App() {
       setNewBooking({ name: "", date: "" });
     }
   };
-  const { register, handleSubmit, reset, getValues } = useForm();
+  const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const errors = formState.errors;
 
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
@@ -38,9 +39,7 @@ function App() {
     console.log(data);
     mutate(data);
   }
-  function onError(errors) {
-    console.log(errors);
-  }
+  function onError(errors) {}
   return (
     <div>
       <h1>Supabase CRUD Example</h1>
@@ -59,18 +58,21 @@ function App() {
               "Value must be less than " + getValues().maxnights,
           })}
         />
+        <div className="error"> {errors?.numNights?.message}</div>
         <input
           type="text"
           placeholder="name"
           name="name"
           {...register("name", { required: "this field is required." })}
         />
+        <div className="error"> {errors?.name?.message}</div>
         <input
           type="text"
           placeholder="cabinId"
           name="cabinId"
           {...register("cabinId", { required: "this field is required." })}
         />
+        <div className="error"> {errors?.cabinId?.message}</div>
         <input
           type="hidden"
           placeholder="maxnights"
@@ -78,14 +80,13 @@ function App() {
           value="20"
           {...register("maxnights")}
         />
-
         <input
           type="text"
-          placeholder="numNiguestIdghts"
+          placeholder="guestId"
           name="guestId"
           {...register("guestId", { required: "this field is required." })}
         />
-
+        <div className="error"> {errors?.guestId?.message}</div>
         <button>Add</button>
       </form>
       <ListBooking />
