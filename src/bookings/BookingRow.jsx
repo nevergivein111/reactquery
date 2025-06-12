@@ -7,9 +7,7 @@ import NewEditForm from "./NewEditForm";
 function BookingRow({ booking }) {
   const [showform, setShowform] = useState(false);
 
-  const editForm = function () {
-    setShowform(true);
-  };
+  const editForm = function () {};
 
   const updateBooking = async (id, updatedFields) => {
     const { data, error } = await supabase
@@ -44,8 +42,8 @@ function BookingRow({ booking }) {
         Update
       </button>
       <button onClick={() => mutate(booking.id)}>Delete</button>
-      <button onClick={() => editForm(booking.id)}>Edit</button>
-      {showform && <NewEditForm />}
+      <button onClick={() => setShowform((show) => !show)}>Edit</button>
+      {showform && <NewEditForm booking={booking} />}
     </li>
   );
 }

@@ -4,7 +4,6 @@ export async function getBookings() {
   const { data, error } = await supabase.from("bookings").select("*");
 
   if (error) {
-    console.log(error);
     throw new Error("Booking is not loaded");
   }
 
@@ -13,7 +12,7 @@ export async function getBookings() {
 
 export async function insertBookings(booking) {
   delete booking.maxnights;
-  console.log(booking);
+
   const { data, error } = await supabase
     .from("bookings")
     .insert([booking])
@@ -21,6 +20,24 @@ export async function insertBookings(booking) {
 
   if (error) {
     console.log(error);
+    throw new Error("Booking is not loaded");
+  }
+
+  return data;
+}
+
+export async function editBookings(booking) {
+  delete booking.maxnights;
+  console.log(booking);
+  const { id: editId, ...editValues } = booking;
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(editValues)
+    .eq("id", editId)
+    .select();
+
+  if (error) {
     throw new Error("Booking is not loaded");
   }
 

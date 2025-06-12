@@ -1,11 +1,29 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { editBookings, insertBookings } from "./apiBooking";
 
-function NewEditForm() {
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
+function NewEditForm({ booking }) {
+  const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: editBookings,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["bookings"] });
+      reset();
+    },
+  });
+
+  function aftersubmit(data) {
+    mutate(data);
+  }
+
+  const { id: editId, ...editValues } = booking;
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: editValues,
+  });
   const errors = formState.errors;
   return (
     <div>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit(aftersubmit)}>
         <input
           type="text"
           placeholder="numNights"
