@@ -3,6 +3,7 @@ import { getBookings } from "./apiBooking";
 import supabase from "../supabase";
 import { useState } from "react";
 import NewEditForm from "./NewEditForm";
+import { useDeleteBooking } from "./useDeleteBooking";
 
 function BookingRow({ booking }) {
   const [showform, setShowform] = useState(false);
@@ -18,21 +19,7 @@ function BookingRow({ booking }) {
   };
 
   // Delete a booking
-  const deleteBooking = async (id) => {
-    const { error } = await supabase.from("bookings").delete().eq("id", id);
-    if (error) console.error(error);
-  };
-  const queryClient = useQueryClient();
-
-  const { isLoading2, mutate } = useMutation({
-    mutationFn: deleteBooking,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["bookings"],
-        queryFn: getBookings,
-      });
-    },
-  });
+  const { mutate, isLoading2 } = useDeleteBooking();
   return (
     <li>
       {booking.name} - {booking.numNights}

@@ -43,3 +43,8 @@ export async function editBookings(booking) {
 
   return data;
 }
+
+export async function deletenewBooking(id) {
+  const { error } = await supabase.from("bookings").delete().eq("id", id);
+  if (error) console.error(error);
+}
