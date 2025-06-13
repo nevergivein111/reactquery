@@ -28,7 +28,7 @@ export async function insertBookings(booking) {
 
 export async function editBookings(booking) {
   delete booking.maxnights;
-  console.log(booking);
+
   const { id: editId, ...editValues } = booking;
 
   const { data, error } = await supabase

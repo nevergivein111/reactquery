@@ -2,13 +2,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { editBookings, insertBookings } from "./apiBooking";
 
-function NewEditForm({ booking }) {
+function NewEditForm({ booking, shoform }) {
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
     mutationFn: editBookings,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["bookings"] });
       reset();
+      shoform(false);
     },
   });
 
@@ -16,9 +17,9 @@ function NewEditForm({ booking }) {
     mutate(data);
   }
 
-  const { id: editId, ...editValues } = booking;
+  // const { id: editId, ...editValues } = booking;
   const { register, handleSubmit, reset, getValues, formState } = useForm({
-    defaultValues: editValues,
+    defaultValues: booking,
   });
   const errors = formState.errors;
   return (

@@ -43,7 +43,7 @@ function BookingRow({ booking }) {
       </button>
       <button onClick={() => mutate(booking.id)}>Delete</button>
       <button onClick={() => setShowform((show) => !show)}>Edit</button>
-      {showform && <NewEditForm booking={booking} />}
+      {showform && <NewEditForm booking={booking} shoform={setShowform} />}
     </li>
   );
 }
