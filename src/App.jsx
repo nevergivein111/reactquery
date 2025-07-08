@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, cloneElement } from "react";
 import supabase from "./supabase"; // Ensure this is correctly configured
 import ListBooking from "./bookings/listBooking";
 import { useForm } from "react-hook-form";
 import { insertBookings } from "./bookings/apiBooking";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Modal } from "./Modal";
+import Uploader from "./data/Uploader";
+import React from "react";
 
 function App() {
   const [newBooking, setNewBooking] = useState({ name: "", date: "" });
@@ -39,11 +42,63 @@ function App() {
     console.log(data);
     mutate(data);
   }
+
+  // MouseTracker component that accepts a render function as a prop
+  const MouseTracker = ({ render }) => {
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    return (
+      <div style={{ height: "100vh" }} onMouseMove={handleMouseMove}>
+        {render(position)}
+      </div>
+    );
+  };
+
   function onError(errors) {}
+
+  const Parent = ({ children }) => {
+    return cloneElement(children, {
+      onClick: () => alert("Clicked from Parent!"),
+    });
+  };
+
   return (
     <div>
       <h1>Supabase CRUD Example</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <Modal>
+        <Modal.OpenButton>Open Modal</Modal.OpenButton>
+
+        <Modal.Container>
+          <Modal.Header>Modal Title</Modal.Header>
+          <Modal.Body>This is the modal body.</Modal.Body>
+          <Modal.Footer>
+            <button>Custom Footer Button</button>
+          </Modal.Footer>
+        </Modal.Container>
+      </Modal>
+
+      <Parent>
+        <button>Click Me</button>
+      </Parent>
+
+      <Uploader />
+
+      <div>
+        <h1>Track the Mouse (Using render prop)</h1>
+        <MouseTracker
+          render={({ x, y }) => (
+            <p>
+              Mouse position: ({x}, {y})
+            </p>
+          )}
+        />
+      </div>
 
       <h2>Add Booking</h2>
       <form onSubmit={handleSubmit(aftersubmit, onError)}>
