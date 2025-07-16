@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/home/mohsin/code/ultimate-react-course-main/17-the-wild-oasis/thunks/thunks/backup/21-the-wild-oasis-website/final-3-after-data/app/layout\":[\"static/media/accc82dc8525882b-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

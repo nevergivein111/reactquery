@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "vendor-chunks/@heroicons";
+exports.ids = ["vendor-chunks/@heroicons"];
+exports.modules = {
+
+/***/ "(rsc)/./node_modules/@heroicons/react/24/solid/esm/UsersIcon.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@heroicons/react/24/solid/esm/UsersIcon.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react.js\");\n\nfunction UsersIcon({\n  title,\n  titleId,\n  ...props\n}, svgRef) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"svg\", Object.assign({\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 24 24\",\n    fill: \"currentColor\",\n    \"aria-hidden\": \"true\",\n    \"data-slot\": \"icon\",\n    ref: svgRef,\n    \"aria-labelledby\": titleId\n  }, props), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"title\", {\n    id: titleId\n  }, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"path\", {\n    d: \"M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z\"\n  }));\n}\nconst ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(UsersIcon);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ForwardRef);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvQGhlcm9pY29ucy9yZWFjdC8yNC9zb2xpZC9lc20vVXNlcnNJY29uLmpzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQStCO0FBQy9CO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsQ0FBQztBQUNELHNCQUFzQixnREFBbUI7QUFDekM7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxHQUFHLCtCQUErQixnREFBbUI7QUFDckQ7QUFDQSxHQUFHLDhCQUE4QixnREFBbUI7QUFDcEQ7QUFDQSxHQUFHO0FBQ0g7QUFDQSxtQkFBbUIsNkNBQWdCO0FBQ25DLGlFQUFlLFVBQVUiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly90aGUtd2lsZC1vYXNpcy13ZWJzaXRlLy4vbm9kZV9tb2R1bGVzL0BoZXJvaWNvbnMvcmVhY3QvMjQvc29saWQvZXNtL1VzZXJzSWNvbi5qcz9jNTZlIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAqIGFzIFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuZnVuY3Rpb24gVXNlcnNJY29uKHtcbiAgdGl0bGUsXG4gIHRpdGxlSWQsXG4gIC4uLnByb3BzXG59LCBzdmdSZWYpIHtcbiAgcmV0dXJuIC8qI19fUFVSRV9fKi9SZWFjdC5jcmVhdGVFbGVtZW50KFwic3ZnXCIsIE9iamVjdC5hc3NpZ24oe1xuICAgIHhtbG5zOiBcImh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnXCIsXG4gICAgdmlld0JveDogXCIwIDAgMjQgMjRcIixcbiAgICBmaWxsOiBcImN1cnJlbnRDb2xvclwiLFxuICAgIFwiYXJpYS1oaWRkZW5cIjogXCJ0cnVlXCIsXG4gICAgXCJkYXRhLXNsb3RcIjogXCJpY29uXCIsXG4gICAgcmVmOiBzdmdSZWYsXG4gICAgXCJhcmlhLWxhYmVsbGVkYnlcIjogdGl0bGVJZFxuICB9LCBwcm9wcyksIHRpdGxlID8gLyojX19QVVJFX18qL1JlYWN0LmNyZWF0ZUVsZW1lbnQoXCJ0aXRsZVwiLCB7XG4gICAgaWQ6IHRpdGxlSWRcbiAgfSwgdGl0bGUpIDogbnVsbCwgLyojX19QVVJFX18qL1JlYWN0LmNyZWF0ZUVsZW1lbnQoXCJwYXRoXCIsIHtcbiAgICBkOiBcIk00LjUgNi4zNzVhNC4xMjUgNC4xMjUgMCAxIDEgOC4yNSAwIDQuMTI1IDQuMTI1IDAgMCAxLTguMjUgMFpNMTQuMjUgOC42MjVhMy4zNzUgMy4zNzUgMCAxIDEgNi43NSAwIDMuMzc1IDMuMzc1IDAgMCAxLTYuNzUgMFpNMS41IDE5LjEyNWE3LjEyNSA3LjEyNSAwIDAgMSAxNC4yNSAwdi4wMDNsLS4wMDEuMTE5YS43NS43NSAwIDAgMS0uMzYzLjYzIDEzLjA2NyAxMy4wNjcgMCAwIDEtNi43NjEgMS44NzNjLTIuNDcyIDAtNC43ODYtLjY4NC02Ljc2LTEuODczYS43NS43NSAwIDAgMS0uMzY0LS42M2wtLjAwMS0uMTIyWk0xNy4yNSAxOS4xMjhsLS4wMDEuMTQ0YTIuMjUgMi4yNSAwIDAgMS0uMjMzLjk2IDEwLjA4OCAxMC4wODggMCAwIDAgNS4wNi0xLjAxLjc1Ljc1IDAgMCAwIC40Mi0uNjQzIDQuODc1IDQuODc1IDAgMCAwLTYuOTU3LTQuNjExIDguNTg2IDguNTg2IDAgMCAxIDEuNzEgNS4xNTd2LjAwM1pcIlxuICB9KSk7XG59XG5jb25zdCBGb3J3YXJkUmVmID0gUmVhY3QuZm9yd2FyZFJlZihVc2Vyc0ljb24pO1xuZXhwb3J0IGRlZmF1bHQgRm9yd2FyZFJlZjsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/@heroicons/react/24/solid/esm/UsersIcon.js\n");
+
+/***/ })
+
+};
+;
