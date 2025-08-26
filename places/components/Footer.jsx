@@ -10,7 +10,16 @@ const Footer = () => {
         <div className='mb-4 md:mb-0'>
           <Image src={logo} alt='Logo' className='h-8 w-auto' />
         </div>
-
+        <div className='flex flex-wrap justify-center md:justify-start mb-4 md:mb-0'>
+          <ul className='flex space-x-4'>
+            <li>
+              <a href='/properties'>Properties</a>
+            </li>
+            <li>
+              <a href='/terms'>Terms of Service</a>
+            </li>
+          </ul>
+        </div>
         <div>
           <p className='text-sm text-gray-500 mt-2 md:mt-0'>
             &copy; {currentYear} PropertyPulse. All rights reserved.
@@ -20,4 +29,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;

@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero';
+import Hero from '../components/Hero';
 import InfoBoxes from '@/components/InfoBoxes';
 import HomeProperties from '@/components/HomeProperties';
 import FeaturedProperties from '@/components/FeaturedProperties';

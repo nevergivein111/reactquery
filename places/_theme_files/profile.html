@@ -173,14 +173,14 @@
                   id="user-menu-item-2"
                   >Saved Properties</a
                 >
-                <a
-                  href="#"
+                <button
                   class="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabindex="-1"
                   id="user-menu-item-2"
-                  >Sign Out</a
                 >
+                  Sign Out
+                </button>
               </div>
             </div>
           </div>
@@ -192,21 +192,21 @@
         <div class="space-y-1 px-2 pb-3 pt-2">
           <a
             href="/index.html"
-            class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            class="bg-black text-white block rounded-md px-3 py-2 text-base font-medium"
             >Home</a
           >
           <a
             href="/properties.html"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            class="text-white block rounded-md px-3 py-2 text-base font-medium"
             >Properties</a
           >
           <a
             href="/add-property.html"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            class="text-white block rounded-md px-3 py-2 text-base font-medium"
             >Add Property</a
           >
           <button
-            class="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+            class="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5"
           >
             <i class="fa-brands fa-google mr-2"></i>
             <span>Login or Register</span>
@@ -215,10 +215,11 @@
       </div>
     </nav>
 
-    <!-- Profile Section -->
     <section class="bg-blue-50">
       <div class="container m-auto py-24">
-        <div class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+        <div
+          class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
+        >
           <h1 class="text-3xl font-bold mb-4">Your Profile</h1>
           <div class="flex flex-col md:flex-row">
             <div class="md:w-1/4 mx-20 mt-10">
@@ -229,8 +230,13 @@
                   alt="User"
                 />
               </div>
-              <h2 class="text-2xl mb-4"><span class="font-bold block">Name: </span> John Doe</h2>
-              <h2 class="text-2xl"><span class="font-bold block">Email: </span> john@gmail.com</h2>
+
+              <h2 class="text-2xl mb-4">
+                <span class="font-bold block">Name: </span> John Doe
+              </h2>
+              <h2 class="text-2xl">
+                <span class="font-bold block">Email: </span> john@gmail.com
+              </h2>
             </div>
 
             <div class="md:w-3/4 md:pl-4">
@@ -248,7 +254,8 @@
                   <p class="text-gray-600">Address: 123 Main St</p>
                 </div>
                 <div class="mt-2">
-                  <a href="/add-property.html"
+                  <a
+                    href="/add-property.html"
                     class="bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600"
                   >
                     Edit
@@ -274,7 +281,8 @@
                   <p class="text-gray-600">Address: 456 Elm St</p>
                 </div>
                 <div class="mt-2">
-                  <a href="/add-property.html"
+                  <a
+                    href="/add-property.html"
                     class="bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600"
                   >
                     Edit
@@ -292,7 +300,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- Footer -->
     <footer class="bg-gray-200 py-4 mt-auto">

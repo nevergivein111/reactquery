@@ -192,21 +192,21 @@
         <div class="space-y-1 px-2 pb-3 pt-2">
           <a
             href="/index.html"
-            class="text-gray-300 block rounded-md px-3 py-2 text-base font-medium"
+            class="bg-black text-white block rounded-md px-3 py-2 text-base font-medium"
             >Home</a
           >
           <a
             href="/properties.html"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            class="text-white block rounded-md px-3 py-2 text-base font-medium"
             >Properties</a
           >
           <a
             href="/add-property.html"
-            class="bg-gray-900 text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            class="text-white block rounded-md px-3 py-2 text-base font-medium"
             >Add Property</a
           >
           <button
-            class="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+            class="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5"
           >
             <i class="fa-brands fa-google mr-2"></i>
             <span>Login or Register</span>
@@ -226,9 +226,7 @@
             </h2>
 
             <div class="mb-4">
-              <label
-                for="type"
-                class="block text-gray-700 font-bold mb-2"
+              <label for="type" class="block text-gray-700 font-bold mb-2"
                 >Property Type</label
               >
               <select
@@ -240,7 +238,7 @@
                 <option value="Apartment">Apartment</option>
                 <option value="Condo">Condo</option>
                 <option value="House">House</option>
-                <option value="Cabin Or Cottage">Cabin or Cottage</option>
+                <option value="CabinOrCottage">Cabin or Cottage</option>
                 <option value="Room">Room</option>
                 <option value="Studio">Studio</option>
                 <option value="Other">Other</option>
@@ -369,7 +367,7 @@
                     type="checkbox"
                     id="amenity_kitchen"
                     name="amenities"
-                    value="Full Kitchen"
+                    value="Full kitchen"
                     class="mr-2"
                   />
                   <label for="amenity_kitchen">Full kitchen</label>
@@ -603,6 +601,7 @@
                 class="border rounded w-full py-2 px-3"
                 accept="image/*"
                 multiple
+                required
               />
             </div>
 

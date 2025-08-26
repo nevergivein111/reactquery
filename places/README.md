@@ -4,22 +4,7 @@
 
 This is the main project from my [Next 14 From Scratch Course](https://www.traversymedia.com/nextjs-from-scratch)
 
-This is the old version of the app that uses API routes for properties, messaging, etc. The current/latest version of the courses uses server actions. The updated code can be found [here](https://github.com/bradtraversy/property-pulse-nextjs) as well as in the [refactor branch](https://github.com/bradtraversy/property-pulse/tree/refactor).
-
-## Important notes
-
-If you are following along with the course and running into issues, then please
-take the time to read the README in the [bugfix branch](https://github.com/bradtraversy/property-pulse/tree/bugfix)
-as this solves many common problems.
-
-There is also a [refactor branch](https://github.com/bradtraversy/property-pulse/tree/refactor)
-where the code has been heavily refactored to stay true to NextJS recommended
-best practices by using querying the database directly from our server
-components for data fetching, and performing updates and adding data using
-server actions.  
-The refactor also makes deployment a fair bit smoother.  
-The course is currently being re recorded for a re release using the code in
-the refactor branch.
+This is the second iteration of the app/course that uses server actions instead of API routes.
 
 The `_theme_files` folder contains the pure HTML files with Tailwind classes.
 
@@ -45,6 +30,7 @@ Here are some of the current features that Property Pulse has:
 - [x] Loading spinners
 - [x] Responsive design (Tailwind)
 - [x] Custom 404 page
+- [x] Next.js Actions
 
 Property Pulse uses the following technologies:
 

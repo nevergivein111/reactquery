@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Map, { Marker } from 'react-map-gl';
 import { setDefaults, fromAddress } from 'react-geocode';
-import Spinner from './Spinner';
 import Image from 'next/image';
 import pin from '@/assets/images/pin.svg';
+import Spinner from './Spinner';
 
 const PropertyMap = ({ property }) => {
   const [lat, setLat] = useState(null);
@@ -64,7 +64,6 @@ const PropertyMap = ({ property }) => {
 
   if (loading) return <Spinner loading={loading} />;
 
-  // Handle case where geocoding failed
   if (geocodeError) {
     return <div className='text-xl'>No location data found</div>;
   }
@@ -89,4 +88,5 @@ const PropertyMap = ({ property }) => {
     )
   );
 };
+
 export default PropertyMap;
