@@ -1,7 +1,0 @@
-{
-  "/cabins/page": "app/cabins/page.js",
-  "/cabins/[cabinId]/page": "app/cabins/[cabinId]/page.js",
-  "/page": "app/page.js",
-  "/about/page": "app/about/page.js",
-  "/icon.png/route": "app/icon.png/route.js"
-}
