@@ -13,7 +13,7 @@ const PostSchema = new Schema(
     comment_status: String,
     ping_status: String,
     post_password: String,
-    post_name: String,
+    post_name: { type: String, unique: [true, "Post Name already exists"] },
     to_ping: String,
     pinged: String,
     post_modified: Date,
