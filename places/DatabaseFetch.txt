@@ -99,3 +99,21 @@ Google Maps :
 
 listing_reviews   base64_decode  unserialize
 google_place_photos ( searlize)
+
+
+
+
+// Example usage
+const post = await Post.findOne({ ID: 79188 })
+  .populate('metas')    // Get all postmeta
+  .populate('author');  // Get author info
+
+const user = await User.findOne({ ID: 42 })
+  .populate('posts');   // Get all posts by user
+
+// Get post with specific meta keys
+const post = await Post.findOne({ ID: 79188 })
+  .populate({
+    path: 'metas',
+    match: { meta_key: 'gallery_image_ids' }
+  });
