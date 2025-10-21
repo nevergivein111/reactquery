@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Property from "@/models/Posts";
+import SafeImage from "./SafeImage";
 // @ts-ignore
 import { unserialize } from "php-unserialize";
 import {
@@ -47,14 +48,12 @@ const PropertyCard2 = async ({ property }) => {
 
   return (
     <div className="rounded-xl shadow-md relative">
-      <Image
+      <SafeImage
         src={imageGuid}
-        alt=""
+        alt={property.post_title}
+        width={400}
         height={0}
-        width={0}
-        sizes="100vw"
-        className="w-full h-auto rounded-t-xl"
-        priority={true}
+        className="rounded-lg object-cover"
       />
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
