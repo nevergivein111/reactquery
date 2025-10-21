@@ -12,7 +12,7 @@ const HomeProperties = async () => {
   const post = await Post.findOne({ ID: 79195 })
     .populate("author")
     .populate("metas"); // Populates all postmeta records
-  console.log(post);
+  // console.log(post);
 
   // Get the 3 latest properties
   const recentProperties = await Property.find({})

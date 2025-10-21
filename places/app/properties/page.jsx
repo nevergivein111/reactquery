@@ -1,16 +1,22 @@
-import PropertyCard from "@/components/PropertyCard";
+import PropertyCard2 from "@/components/PropertyCard2";
 import PropertySearchForm from "@/components/PropertySearchForm";
 import Pagination from "@/components/Pagination";
-import Property from "@/models/Property";
+//import Property from "@/models/Property";
+import Property from "@/models/Posts";
+import PostMeta from "@/models/PostMeta";
+import NewUser from "@/models/NewUser";
 import connectDB from "@/config/database";
 
 const PropertiesPage = async ({ searchParams: { pageSize = 9, page = 1 } }) => {
   await connectDB();
   const skip = (page - 1) * pageSize;
 
-  const total = await Property.countDocuments({});
+  const total = await Property.countDocuments({ post_type: "listing" });
 
-  const properties = await Property.find({}).skip(skip).limit(pageSize);
+  const properties = await Property.find({ post_type: "listing" })
+    .populate("metas")
+    .skip(skip)
+    .limit(pageSize);
 
   // Calculate if pagination is needed
   const showPagination = total > pageSize;
@@ -30,7 +36,7 @@ const PropertiesPage = async ({ searchParams: { pageSize = 9, page = 1 } }) => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {properties.map((property, index) => (
-                <PropertyCard property={property} key={index} />
+                <PropertyCard2 property={property} key={index} />
               ))}
             </div>
           )}
