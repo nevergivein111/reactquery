@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Property from "@/models/Posts";
-import SafeImage from "./SafeImage";
 // @ts-ignore
 import { unserialize } from "php-unserialize";
 import {
@@ -40,7 +39,8 @@ const PropertyCard2 = async ({ property }) => {
 
   let imageGuid =
     propertyImageobject?.guid ||
-    "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    metaData?.google_place_photos?.images[0] ||
+    "/image-not-found.png";
   imageGuid = imageGuid.replace(
     "http://pakistanplaces.com/wp-content",
     "http://localhost:3000"
@@ -48,13 +48,19 @@ const PropertyCard2 = async ({ property }) => {
 
   return (
     <div className="rounded-xl shadow-md relative">
-      <SafeImage
-        src={imageGuid}
-        alt={property.post_title}
-        width={400}
-        height={0}
-        className="rounded-lg object-cover"
-      />
+      <div className="relative w-full rounded-xl overflow-hidden">
+        <div className="relative w-full aspect-[4/3]">
+          <Image
+            key={imageGuid} // force remount when src changes (fixes stale image)
+            src={imageGuid}
+            alt={property.post_title}
+            fill // auto sizes to parent
+            className="object-cover rounded-lg"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            unoptimized // keep if you don't want to add domains to next.config.js
+          />
+        </div>
+      </div>
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
           <div className="text-gray-600">{property.post_title}</div>

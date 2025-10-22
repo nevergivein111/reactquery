@@ -1,18 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-/**
- * SafeImage Component
- * Handles broken image URLs gracefully by switching to a fallback image.
- *
- * @param {string} src - Original image URL
- * @param {string} alt - Alt text for accessibility
- * @param {number} width - Image width (required for next/image)
- * @param {number} height - Image height (required for next/image)
- * @param {string} fallback - Optional fallback image (default: /fallback.jpg)
- */
 export default function SafeImage({
   src,
   alt,
@@ -22,6 +12,11 @@ export default function SafeImage({
   ...props
 }) {
   const [imgSrc, setImgSrc] = useState(src);
+
+  // Update imgSrc when src prop changes
+  useEffect(() => {
+    setImgSrc(src);
+  }, [src]);
 
   const handleError = () => {
     console.warn(`Image failed to load: ${src} → using fallback`);
