@@ -4,7 +4,6 @@ import Pagination from "@/components/Pagination";
 //import Property from "@/models/Property";
 import Property from "@/models/Posts";
 import PostMeta from "@/models/PostMeta";
-import NewUser from "@/models/NewUser";
 import connectDB from "@/config/database";
 
 const PropertiesPage = async ({ searchParams: { pageSize = 9, page = 1 } }) => {
