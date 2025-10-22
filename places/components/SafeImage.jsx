@@ -12,6 +12,7 @@ export default function SafeImage({
   ...props
 }) {
   const [imgSrc, setImgSrc] = useState(src);
+  console.log(imgSrc);
 
   // Update imgSrc when src prop changes
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function SafeImage({
     <Image
       {...props}
       src={imgSrc}
-      alt={alt}
+      alt="nice image"
       width={width}
       height={height}
       onError={handleError}
