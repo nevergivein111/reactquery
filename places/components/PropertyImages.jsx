@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-const PropertyImages = ({ images }) => {
+const PropertyImages = ({ title, images }) => {
   var newimages = Object.values(images);
   console.log(newimages);
 
@@ -22,7 +22,7 @@ const PropertyImages = ({ images }) => {
                   ref={ref}
                   onClick={open}
                   src={images[0]}
-                  alt=""
+                  alt={title}
                   className="object-cover h-[400px] mx-auto rounded-xl"
                   width={1800}
                   height={400}
@@ -54,7 +54,7 @@ const PropertyImages = ({ images }) => {
                         ref={ref}
                         onClick={open}
                         src={image}
-                        alt=""
+                        alt={title}
                         className="object-cover h-[400px] w-full rounded-xl cursor-pointer"
                         width={0}
                         height={0}

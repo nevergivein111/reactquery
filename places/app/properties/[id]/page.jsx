@@ -86,6 +86,7 @@ const PropertyPage = async ({ params }) => {
       {(metaData?.google_place_photos?.images?.[0] ||
         metaData?.gallery_image_ids) && (
         <PropertyHeaderImage
+          title={property.post_title}
           {...(metaData?.google_place_photos?.images?.[0]
             ? { image2: metaData.google_place_photos.images[0] }
             : {})}
@@ -112,11 +113,17 @@ const PropertyPage = async ({ params }) => {
 
       {metaData?.google_place_photos?.images &&
         Object.keys(metaData.google_place_photos.images).length > 0 && (
-          <PropertyImages images={metaData.google_place_photos.images} />
+          <PropertyImages
+            title={property.post_title}
+            images={metaData.google_place_photos.images}
+          />
         )}
       {metaData?.gallery_image_ids &&
         metaData?.gallery_image_ids?.length > 0 && (
-          <PropertyImages images={metaData.gallery_image_ids} />
+          <PropertyImages
+            title={property.post_title}
+            images={metaData.gallery_image_ids}
+          />
         )}
     </>
   );

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const PropertyHeaderImage = ({ image, image2 }) => {
+const PropertyHeaderImage = ({ title, image, image2 }) => {
   const imageSrc =
     Array.isArray(image) && image.length > 0 ? image[0] : image2 || null;
 
@@ -12,7 +12,7 @@ const PropertyHeaderImage = ({ image, image2 }) => {
         <div className="grid grid-cols-1">
           <Image
             src={imageSrc}
-            alt=""
+            alt={title}
             className="object-cover h-[400px] w-full"
             width={0}
             height={0}
