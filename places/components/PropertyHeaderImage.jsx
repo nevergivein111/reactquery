@@ -1,12 +1,17 @@
 import Image from "next/image";
 
 const PropertyHeaderImage = ({ image, image2 }) => {
+  const imageSrc =
+    Array.isArray(image) && image.length > 0 ? image[0] : image2 || null;
+
+  // If neither is set, render nothing
+  if (!imageSrc) return null;
   return (
     <section>
       <div className="container-xl m-auto">
         <div className="grid grid-cols-1">
           <Image
-            src={image2}
+            src={imageSrc}
             alt=""
             className="object-cover h-[400px] w-full"
             width={0}

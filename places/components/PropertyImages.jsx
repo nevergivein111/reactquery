@@ -4,6 +4,7 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 
 const PropertyImages = ({ images }) => {
   var newimages = Object.values(images);
+  console.log(newimages);
 
   return (
     <Gallery>

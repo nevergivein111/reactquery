@@ -27,17 +27,34 @@ const PropertyPage = async ({ params }) => {
     return acc;
   }, {});
 
-  if (metaData.gallery_image_ids) {
-    const idsArray = metaData.gallery_image_ids
-      .split(",")
-      .map((id) => id.trim());
-    if (idsArray.length > 0) {
-      // Fetch all posts where ID is in the list
-      metaData.gallery_image_ids = await Property.find({
-        ID: { $in: idsArray },
-      });
+  // ...existing code...
 
-      // array of matching documents
+  if (metaData?.gallery_image_ids) {
+    try {
+      const idsArray = metaData.gallery_image_ids
+        .split(",")
+        .filter(Boolean)
+        .map((id) => id.trim());
+
+      if (idsArray.length > 0) {
+        // Fetch all posts where ID is in the list
+        const galleryImages = await Property.find({
+          ID: { $in: idsArray },
+        });
+
+        // Extract only the guid field from gallery images
+        if (galleryImages.length > 0) {
+          metaData.gallery_image_ids = galleryImages.map((img) =>
+            img.guid.replace(
+              "http://pakistanplaces.com/wp-content",
+              "http://localhost:3000"
+            )
+          );
+        }
+      }
+    } catch (error) {
+      console.error("Error processing gallery images:", error);
+      metaData.gallery_image_ids = [];
     }
   }
 
@@ -64,11 +81,19 @@ const PropertyPage = async ({ params }) => {
     );
   }
 
-  console.log(metaData?.google_place_photos?.images);
-
   return (
     <>
-      <PropertyHeaderImage image2={metaData?.google_place_photos?.images[0]} />
+      {(metaData?.google_place_photos?.images?.[0] ||
+        metaData?.gallery_image_ids) && (
+        <PropertyHeaderImage
+          {...(metaData?.google_place_photos?.images?.[0]
+            ? { image2: metaData.google_place_photos.images[0] }
+            : {})}
+          {...(metaData?.gallery_image_ids
+            ? { image: metaData.gallery_image_ids }
+            : {})}
+        />
+      )}
       <section>
         <div className="container m-auto py-6 px-6">
           <Link
@@ -84,7 +109,15 @@ const PropertyPage = async ({ params }) => {
           <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6"></div>
         </div>
       </section>
-      <PropertyImages images={metaData?.google_place_photos?.images} />
+
+      {metaData?.google_place_photos?.images &&
+        Object.keys(metaData.google_place_photos.images).length > 0 && (
+          <PropertyImages images={metaData.google_place_photos.images} />
+        )}
+      {metaData?.gallery_image_ids &&
+        metaData?.gallery_image_ids?.length > 0 && (
+          <PropertyImages images={metaData.gallery_image_ids} />
+        )}
     </>
   );
 };
