@@ -43,8 +43,8 @@ const PropertyMap = ({ property }) => {
 
         // const { lat, lng } = res.results[0].geometry.location;
 
-        const lat = 34.1868544;
-        const lng = 73.23648;
+        const lat = property.latitude;
+        const lng = property.longitude;
         setLat(lat);
         setLng(lng);
         setViewport({
